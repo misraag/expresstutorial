@@ -1,9 +1,11 @@
-const express = require('express')
+const express = require('express');
+const morgan = require('morgan');
 const app = express();
-const logger = require('./logger')
-const authorize = require('./authorize')
+// const logger = require('./logger')
+// const authorize = require('./authorize')
 
-app.use([authorize, logger])
+// app.use([authorize, logger])
+app.use(morgan('tiny'))
 
 
 app.get('/', (req, res) => {
