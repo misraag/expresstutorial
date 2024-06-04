@@ -6,6 +6,15 @@ app.use(express.static("./methods-public"));
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json())
 
+app.post('/api/postman/people', (req, res) => {
+    const { name } = req.body
+    if(!name) {
+        res.status(400).json({ success:false, msg: 'Please provide name value!'})
+    }
+
+    res.status(201).json({success:true, data: [...people, {"name":name}]})
+})
+
 app.post('/api/people', (req, res) => {
     const { name } = req.body
     if(!name) {
